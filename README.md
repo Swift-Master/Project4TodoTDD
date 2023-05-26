@@ -2,7 +2,7 @@
 
 간략한 설명
 
-이 앱의 레퍼런스는 [soapyigu의 Swift-30-Projects](https://github.com/soapyigu/Swift-30-Projects)입니다.
+이 앱의 레퍼런스는 [soapyigu의 Swift-30-Projects Project 04 - TodoTDD](https://github.com/soapyigu/Swift-30-Projects/tree/master/Project%2004%20-%20TodoTDD)입니다.
 
 기본 기능을 모두 구현했다면, 디자인 및 추가 기능 구현은 자유롭게 해주세요.
 
@@ -33,4 +33,4 @@
 7. 2번으로 돌아가 새로운 작업을 반복합니다.
 
 ## 실제 화면
-![시뮬레이터화면](./이미지이름.gif)
+![시뮬레이터화면](./ToDoTDD.gif)
