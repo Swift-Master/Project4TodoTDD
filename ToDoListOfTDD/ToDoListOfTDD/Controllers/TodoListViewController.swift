@@ -9,8 +9,8 @@ class TodoListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTable()
         setNaviBar()
+        setTable()
         setUI()
     }
     
@@ -18,12 +18,21 @@ class TodoListViewController: UIViewController {
         todoTable = UITableView()
         todoTable.dataSource = dataProvider
         todoTable.delegate = dataProvider
+        todoTable.backgroundColor = .white
+        todoTable.register(TodoItemCell.self, forCellReuseIdentifier: TodoItemCell.cellIdentifier)
         dataProvider.itemManager = itemManager
         NotificationCenter.default.addObserver(self, selector: #selector(showDetailView), name: Notification.ItemSelectedNotification, object: nil)
     }
     
     func setNaviBar() {
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.backgroundColor = .white
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showTodoForm))
+        navigationItem.scrollEdgeAppearance = navigationBarAppearance
+        navigationItem.standardAppearance = navigationBarAppearance
+        navigationItem.compactAppearance = navigationBarAppearance
+        
+        navigationController?.setNeedsStatusBarAppearanceUpdate()
     }
     
     func setUI() {
@@ -46,6 +55,7 @@ class TodoListViewController: UIViewController {
     
     @objc func showTodoForm() {
         let nextVC = TodoFormViewController()
+        nextVC.itemManager = itemManager
         navigationController?.pushViewController(nextVC, animated: false)
     }
 

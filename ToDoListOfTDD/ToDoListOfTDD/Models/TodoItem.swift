@@ -1,22 +1,23 @@
-//
-//  todoItem.swift
-//  ToDoListOfTDD
-//
-//  Created by 최우태 on 2023/05/29.
-//
 
 import Foundation
 import CoreLocation
 struct TodoItem {
     var title : String?
     var description : String?
-    var plannedDate : Date?
-    var todoLocation : CLLocationCoordinate2D?
+    var todoDate : String?
+    var todoLocation : Location?
     
-    init(title: String, description: String, plannedDate: Date, todoLocation: CLLocationCoordinate2D) {
+    init(title: String, description: String, rawDate: Date, todoLocation: Location?) {
         self.title = title
         self.description = description
-        self.plannedDate = plannedDate
+        self.todoDate = dateToString(rawDate)
         self.todoLocation = todoLocation
     }
+    
+    func dateToString(_ date : Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        return dateFormatter.string(from: date)
+    }
+    
 }

@@ -18,6 +18,7 @@ class TodoItemCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.backgroundColor = .blue
         setUI()
     }
     
@@ -45,6 +46,7 @@ class TodoItemCell: UITableViewCell {
             make.top.equalTo(self.safeAreaLayoutGuide).offset(30)
         }
     }
+    
     
 }
     

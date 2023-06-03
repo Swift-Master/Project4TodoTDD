@@ -16,7 +16,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = TodoListViewController()
+        
+        let naviVC = UINavigationController(rootViewController: TodoListViewController())
+        
+        window?.rootViewController = naviVC
         window?.makeKeyAndVisible()
     }
 

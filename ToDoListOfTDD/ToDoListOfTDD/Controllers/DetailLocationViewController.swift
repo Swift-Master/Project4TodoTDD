@@ -6,26 +6,45 @@
 //
 
 import UIKit
-
+import MapKit
 class DetailLocationViewController: UIViewController {
 
     var item : TodoItem?
+    var map = MKMapView()
+    
+    lazy var titleLabel = label
+    lazy var locationLabel = label
+    
+    var label : UILabel {
+        return {
+            let label = UILabel()
+            label.font = .systemFont(ofSize: 17)
+            label.textAlignment = .center
+            return label
+        }()
+    }
+
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+      super.viewDidLoad()
+      
 
-        // Do any additional setup after loading the view.
+        
+
+    }
+    
+    func setUI() {
+        guard let item = item else {
+          return
+        }
+        titleLabel.text = item.title
+        locationLabel.text = item.todoLocation?.name
+    }
+    
+    func setMap() {
+        
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

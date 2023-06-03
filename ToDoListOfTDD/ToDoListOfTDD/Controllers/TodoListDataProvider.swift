@@ -39,7 +39,7 @@ extension TodoListDataProvider : UITableViewDataSource,UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: TodoItemCell.cellIdentifier) as! TodoItemCell
         guard let itemManager = itemManager else {return cell}
         var currentItem : TodoItem
         switch TodoType(rawValue: indexPath.section) {
@@ -49,6 +49,9 @@ extension TodoListDataProvider : UITableViewDataSource,UITableViewDelegate {
         }
         
         // 커스텀 셀 만든 후 구성요소 할당해주는 로직 필요
+        cell.titleLabel.text = currentItem.title
+        cell.dateLabel.text = currentItem.todoDate
+        cell.locationLabel.text = currentItem.todoLocation?.name
         
          return cell
     }
