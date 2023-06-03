@@ -83,19 +83,19 @@ class TodoFormViewController: UIViewController {
         titleTextField.becomeFirstResponder()
         [titleTextField,locationTextField,descriptionTextField].forEach{view.addSubview($0)}
         titleTextField.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(50)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(50)
             make.width.equalTo(200)
-            make.centerX.equalTo(view.safeAreaLayoutGuide.snp.centerX)
+            make.centerX.equalTo(view.safeAreaLayoutGuide)
         }
         locationTextField.snp.makeConstraints { make in
             make.top.equalTo(titleTextField.snp.top).offset(50)
             make.width.equalTo(200)
-            make.centerX.equalTo(view.safeAreaLayoutGuide.snp.centerX)
+            make.centerX.equalTo(view.safeAreaLayoutGuide)
         }
         descriptionTextField.snp.makeConstraints { make in
             make.top.equalTo(locationTextField.snp.top).offset(50)
             make.width.equalTo(200)
-            make.centerX.equalTo(view.safeAreaLayoutGuide.snp.centerX)
+            make.centerX.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
@@ -104,12 +104,14 @@ class TodoFormViewController: UIViewController {
         datePicker.datePickerMode = .date
         datePicker.locale = Locale(identifier: "ko-KR")
         datePicker.timeZone = .autoupdatingCurrent
+        datePicker.date = Date()
+        datePicker.addTarget(self, action: #selector(checkForm), for: .valueChanged)
         view.addSubview(datePicker)
         view.addSubview(pickerLabel)
         pickerLabel.snp.makeConstraints { make in
             make.top.equalTo(descriptionTextField.snp.top).offset(50)
             make.width.equalTo(200)
-            make.centerX.equalTo(view.safeAreaLayoutGuide.snp.centerX)
+            make.centerX.equalTo(view.safeAreaLayoutGuide)
         }
         datePicker.snp.makeConstraints { make in
             make.top.equalTo(pickerLabel.snp.bottom).offset(5)
@@ -122,9 +124,15 @@ class TodoFormViewController: UIViewController {
         view.addSubview(buttonStack)
         buttonStack.snp.makeConstraints { make in
             make.top.equalTo(datePicker.snp.bottom).offset(50)
-            make.width.equalTo(view.safeAreaLayoutGuide.snp.width)
-            make.centerX.equalTo(view.safeAreaLayoutGuide.snp.centerX)
+            make.width.equalTo(view.safeAreaLayoutGuide)
+            make.centerX.equalTo(view.safeAreaLayoutGuide)
         }
+    }
+    
+    func createItem(title : String, description : String, date : Date, location : String) {
+        
+        let newItem = TodoItem(title: title, description: description, rawDate: date, todoLocation: Location(name: location))
+        itemManager?.addItem(newItem)
     }
     
     @objc func discardForm() {
@@ -132,11 +140,27 @@ class TodoFormViewController: UIViewController {
     }
     
     @objc func submitForm() {
-        
+        guard let title = titleTextField.text,let location = locationTextField.text,let detail = descriptionTextField.text else {return}
+        createItem(title: title, description: description, date: datePicker.date, location: location)
+        navigationController?.popViewController(animated: false)
+    }
+    
+    @objc func checkForm() {
+        guard let title = titleTextField.text,let location = locationTextField.text,let detail = descriptionTextField.text else {return}
+        if title.count > 0 && location.count > 0 && detail.count > 0 {
+            submitButton.isEnabled = true
+        }
     }
     
 
     
     
 
+}
+
+extension TodoFormViewController : UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

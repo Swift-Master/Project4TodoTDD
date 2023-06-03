@@ -7,6 +7,10 @@ class TodoListViewController: UIViewController {
     var itemManager = ModelManager()
     var dataProvider = TodoListDataProvider()
     
+    override func viewWillAppear(_ animated: Bool) {
+        todoTable.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNaviBar()
