@@ -7,22 +7,21 @@
 
 import Foundation
 import CoreLocation
-struct Location {
+class Location {
     var name : String?
-    var coordinate : CLLocationCoordinate2D? {
-        return forwardGeocoding(address: name)
-    }
+    var coordinate : CLLocationCoordinate2D?
     
     init(name: String?) {
         self.name = name
+        forwardGeocoding(address: name)
     }
     
-    func forwardGeocoding(address: String?) -> CLLocationCoordinate2D? {
+    func forwardGeocoding(address: String?){
         let geocoder = CLGeocoder()
         
-        guard let address = address else {return nil}
-        var coordinates : CLLocationCoordinate2D?
-        geocoder.geocodeAddressString(address, completionHandler: { (placemarks, error) in
+        guard let address = address else {return}
+        geocoder.geocodeAddressString(address, completionHandler: {
+            (placemarks, error) in
             if error != nil {
                 print("Failed to retrieve location")
                 return
@@ -35,13 +34,12 @@ struct Location {
             }
             
             if let location = location {
-                coordinates = location.coordinate
+                self.coordinate = location.coordinate
             }
             else
             {
                 print("No Matching Location Found")
             }
         })
-        return coordinates
     }
 }

@@ -1,9 +1,3 @@
-//
-//  DetailLocationViewController.swift
-//  ToDoListOfTDD
-//
-//  Created by 최우태 on 2023/05/29.
-//
 
 import UIKit
 import SnapKit
@@ -59,6 +53,9 @@ class DetailLocationViewController: UIViewController {
     }
     
     func setMap(_ item : TodoItem) {
+        guard let currentCoordinate = item.todoLocation?.coordinate else {return}
+        let coordinateRegion = MKCoordinateRegion(center: currentCoordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+        map.setRegion(coordinateRegion, animated: true)
         view.addSubview(map)
         
         map.snp.makeConstraints { make in
