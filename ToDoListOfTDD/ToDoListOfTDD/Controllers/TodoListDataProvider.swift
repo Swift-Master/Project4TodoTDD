@@ -53,7 +53,7 @@ extension TodoListDataProvider : UITableViewDataSource,UITableViewDelegate {
         cell.dateLabel.text = currentItem.todoDate
         cell.locationLabel.text = currentItem.todoLocation?.name
         
-         return cell
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -62,9 +62,32 @@ extension TodoListDataProvider : UITableViewDataSource,UITableViewDelegate {
         guard let itemManager = itemManager else {return}
         NotificationCenter.default.post(name: Notification.ItemSelectedNotification, object: self,userInfo: ["index":indexPath.row])
         
-        // 컨트롤러(TodoListViewController)에서  다음 컨트롤러로 넘기는 로직 필요
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        guard let manager = itemManager else {return}
+        if editingStyle == .delete {
+            switch TodoType(rawValue: indexPath.section) {
+            case .done : manager.uncheckItem(at: indexPath.row)
+            case .todo : manager.checkItem(at: indexPath.row)
+            default : print("에러 발생")
+            }
+        }
+        tableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let manager = itemManager else {return nil}
+        var sectionTitle : String?
+        switch TodoType(rawValue: section) {
+        case .done : sectionTitle = "완료한 일(\(manager.doneQuantity))"
+        case .todo : sectionTitle = "해야 할 일(\(manager.todoQuantity))"
+            default : break
+        }
+        return sectionTitle
     }
 
     
-    
+
 }

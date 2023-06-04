@@ -23,6 +23,7 @@ class TodoListViewController: UIViewController {
         todoTable.dataSource = dataProvider
         todoTable.delegate = dataProvider
         todoTable.backgroundColor = .white
+        
         todoTable.register(TodoItemCell.self, forCellReuseIdentifier: TodoItemCell.cellIdentifier)
         dataProvider.itemManager = itemManager
         NotificationCenter.default.addObserver(self, selector: #selector(showDetailView), name: Notification.ItemSelectedNotification, object: nil)
