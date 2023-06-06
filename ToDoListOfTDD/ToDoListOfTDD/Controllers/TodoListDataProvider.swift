@@ -1,16 +1,6 @@
-//
-//  TodoListDataProvider.swift
-//  ToDoListOfTDD
-//
-//  Created by 최우태 on 2023/05/29.
-//
-
 import UIKit
 
-enum TodoType : Int {
-    case todo
-    case done
-}
+
 
 class TodoListDataProvider : NSObject {
     var itemManager : ModelManager?
@@ -48,7 +38,6 @@ extension TodoListDataProvider : UITableViewDataSource,UITableViewDelegate {
         default : fatalError()
         }
         
-        // 커스텀 셀 만든 후 구성요소 할당해주는 로직 필요
         cell.titleLabel.text = currentItem.title
         cell.dateLabel.text = currentItem.todoDate
         cell.locationLabel.text = currentItem.todoLocation?.name
@@ -59,7 +48,6 @@ extension TodoListDataProvider : UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if TodoType(rawValue: indexPath.section) == .done {return}
         
-        guard let itemManager = itemManager else {return}
         NotificationCenter.default.post(name: Notification.ItemSelectedNotification, object: self,userInfo: ["index":indexPath.row])
         
     }
@@ -68,11 +56,8 @@ extension TodoListDataProvider : UITableViewDataSource,UITableViewDelegate {
         
         guard let manager = itemManager else {return}
         if editingStyle == .delete {
-            switch TodoType(rawValue: indexPath.section) {
-            case .done : manager.uncheckItem(at: indexPath.row)
-            case .todo : manager.checkItem(at: indexPath.row)
-            default : print("에러 발생")
-            }
+            manager.clearItem(at: indexPath)
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
         tableView.reloadData()
     }
@@ -83,9 +68,25 @@ extension TodoListDataProvider : UITableViewDataSource,UITableViewDelegate {
         switch TodoType(rawValue: section) {
         case .done : sectionTitle = "완료한 일(\(manager.doneQuantity))"
         case .todo : sectionTitle = "해야 할 일(\(manager.todoQuantity))"
-            default : break
+        default : break
         }
         return sectionTitle
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        guard let manager = itemManager else {return}
+        if sourceIndexPath.section < destinationIndexPath.section {
+            manager.checkItem(at: sourceIndexPath.row)
+        } else {
+            manager.uncheckItem(at: destinationIndexPath.row)
+        }
+            tableView.reloadData()
     }
 
     

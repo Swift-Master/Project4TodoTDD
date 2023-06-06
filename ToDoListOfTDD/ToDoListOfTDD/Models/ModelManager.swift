@@ -36,8 +36,12 @@ class ModelManager {
         todoGroup.append(uncheckedTodo)
     }
     
-    func clearGroups() {
-        todoGroup.removeAll()
-        doneGroup.removeAll()
+    func clearItem(at indexPath : IndexPath) {
+        let section = indexPath.section, row = indexPath.row
+        switch section {
+        case 0 : todoGroup.remove(at: row)
+        case 1 : doneGroup.remove(at: row)
+        default : break
+        }
     }
 }

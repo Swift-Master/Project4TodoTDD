@@ -28,23 +28,23 @@ class TodoItemCell: UITableViewCell {
     }
     
     func setUI() {
-        [titleLabel,dateLabel,locationLabel].forEach{self.addSubview($0)}
+        [titleLabel,dateLabel,locationLabel].forEach{contentView.addSubview($0)}
         titleLabel.snp.makeConstraints { make in
-            make.leading.equalTo(self.safeAreaLayoutGuide.snp.leading).offset(20)
-            make.width.equalTo(100)
-            make.centerY.equalTo(self.safeAreaLayoutGuide)
-            make.top.equalTo(self.safeAreaLayoutGuide).offset(30)
+            make.leading.equalToSuperview().offset(20)
+            make.width.equalTo(80)
+            make.centerY.equalToSuperview()
+            make.top.equalToSuperview().offset(30)
         }
         locationLabel.snp.makeConstraints { make in
             make.leading.equalTo(titleLabel.snp.trailing).offset(20)
-            make.width.equalTo(120)
-            make.centerY.equalTo(self.safeAreaLayoutGuide)
-            make.top.equalTo(self.safeAreaLayoutGuide).offset(30)
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+            make.top.equalToSuperview().offset(30)
         }
         dateLabel.snp.makeConstraints { make in
             make.leading.equalTo(locationLabel.snp.trailing).offset(20)
-            make.centerY.equalTo(self.safeAreaLayoutGuide)
-            make.top.equalTo(self.safeAreaLayoutGuide).offset(30)
+            make.centerY.equalToSuperview()
+            make.top.equalToSuperview().offset(30)
         }
     }
     

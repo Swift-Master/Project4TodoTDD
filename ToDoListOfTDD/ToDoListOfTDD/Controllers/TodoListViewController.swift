@@ -6,6 +6,9 @@ class TodoListViewController: UIViewController {
     
     var itemManager = ModelManager()
     var dataProvider = TodoListDataProvider()
+    lazy var doneButton = UIBarButtonItem(title:"Done",style: .done, target: self, action: #selector(editTable))
+    
+    lazy var editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTable))
     
     override func viewWillAppear(_ animated: Bool) {
         todoTable.reloadData()
@@ -32,6 +35,8 @@ class TodoListViewController: UIViewController {
     func setNaviBar() {
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.backgroundColor = .white
+        doneButton.tintColor = .systemRed
+        navigationItem.leftBarButtonItem = editButton
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showTodoForm))
         navigationItem.scrollEdgeAppearance = navigationBarAppearance
         navigationItem.standardAppearance = navigationBarAppearance
@@ -49,7 +54,6 @@ class TodoListViewController: UIViewController {
     
     @objc func showDetailView(_ sender : Notification) {
         guard let currentIndex = sender.userInfo?["index"] as? Int else {return}
-        
         let currentItem = itemManager.item(at: currentIndex)
         let nextVC = DetailLocationViewController()
         nextVC.item = currentItem
@@ -63,7 +67,15 @@ class TodoListViewController: UIViewController {
         nextVC.itemManager = itemManager
         navigationController?.pushViewController(nextVC, animated: false)
     }
-
-
+    
+    @objc func editTable(_ sender : UIBarButtonItem) {
+        let editState = !todoTable.isEditing
+        todoTable.setEditing(editState, animated: true)
+        if sender == editButton {
+            navigationItem.leftBarButtonItem = doneButton
+        }else {
+            navigationItem.leftBarButtonItem = editButton
+        }
+    }
+    
 }
-
