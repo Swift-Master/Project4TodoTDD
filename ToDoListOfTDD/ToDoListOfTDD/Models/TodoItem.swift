@@ -1,6 +1,8 @@
 
 import Foundation
 import CoreLocation
+
+// MARK: - todo 데이터 모델
 struct TodoItem {
     var title : String?
     var description : String?
@@ -14,6 +16,7 @@ struct TodoItem {
         self.todoLocation = todoLocation
     }
     
+    // MARK: - 입력된 날짜를 원하는 문자열 형태로 변환합니다
     func dateToString(_ date : Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy"
