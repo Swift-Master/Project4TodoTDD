@@ -106,6 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				6E39C5982A25111400967990 /* TodoItemCell.swift */,
+				6E52A5552A2108FD009A81D2 /* Main.storyboard */,
+				6E52A55A2A2108FE009A81D2 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -160,9 +162,7 @@
 				6E39C58D2A24DAA800967990 /* Utils */,
 				6E52A54F2A2108FD009A81D2 /* AppDelegate.swift */,
 				6E52A5512A2108FD009A81D2 /* SceneDelegate.swift */,
-				6E52A5552A2108FD009A81D2 /* Main.storyboard */,
 				6E52A5582A2108FE009A81D2 /* Assets.xcassets */,
-				6E52A55A2A2108FE009A81D2 /* LaunchScreen.storyboard */,
 				6E52A55D2A2108FE009A81D2 /* Info.plist */,
 			);
 			path = ToDoListOfTDD;

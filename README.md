@@ -1,36 +1,25 @@
-## 프로젝트 번호 : 프로젝트 이름
+# 프로젝트 4 : TodoTDD
 
-간략한 설명
+## step1
+### 날짜 : 2023.06.07
 
-이 앱의 레퍼런스는 [soapyigu의 Swift-30-Projects Project 04 - TodoTDD](https://github.com/soapyigu/Swift-30-Projects/tree/master/Project%2004%20-%20TodoTDD)입니다.
+### 구현사항
+- Model
+    - 날짜 변환 로직이 포함된 Todo 데이터 모델 구조체 구현. 
+    - 데이터 모델을 관리하는 배열을 만들고 접근하는 관리자 클래스 구현
+    - GeoCoder를 통해 문자열을 좌표로 변환하는 로직 구현
 
-기본 기능을 모두 구현했다면, 디자인 및 추가 기능 구현은 자유롭게 해주세요.
+- View
+    - 테이블 뷰 커스텀 셀 구현
 
-## 가이드
+- Controller
+    - todo가 나열된 테이블 뷰 화면 구현
+        - 미완료, 완료 항목 섹션으로 구분
+        - 편집모드 전환을 통해 항목 이동 및 삭제
+        - 상세 화면, 항목 생성 화면으로 이동
+    - todo 장소를 지도에 표시하는 상세보기 화면 구현
+    - todo 생성 화면 구현
 
-영상 가이드는 [코드스쿼드 pr연습](https://www.youtube.com/watch?v=lFinZfu3QO0)을 참조해주세요.
+### 구현 화면
 
-1. 본인 이름으로 브랜치(ex: PAKA)를 생성한 후, 자신의 레포로 fork해주세요.
-
-2. fork 한 레포에서 기능 또는 화면 단위로 새 브랜치(ex: pr1)를 생성 후 작업 및 커밋합니다. 
-
-3. 커밋했던 브랜치(pr1)에서 자신의 이름 브랜치(PAKA)로 PR을 올려주세요.
-
-4. 코드 리뷰를 받고 모든 수정사항을 반영한 후 `squash and merge` 옵션으로 자신의 브랜치에 merge해주세요.
-
-5. merge했던 브랜치(pr1)에서 fork한 레포의 main 브랜치로 checkout후 해당 브랜치(pr1)를 삭제합니다.
-
-6. 다음 명령어들을 순차적으로 실행합니다.
-
-```
-    git remote add upstream https://github.com/Swift-Master/Project1-GoodAsOldPhones
-    
-    git fetch upstream `본인의 브랜치명(ex:PAKA)`
-    
-    git rebase upstream `upstream/본인의브랜치명(ex:PAKA)`
-```
-
-7. 2번으로 돌아가 새로운 작업을 반복합니다.
-
-## 실제 화면
-![시뮬레이터화면](./ToDoTDD.gif)
+<image src = "./project4.gif" width = 30%></image>
