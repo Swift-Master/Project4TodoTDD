@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -85,7 +86,7 @@
                     <navigationItem key="navigationItem" id="oA8-DI-GKk">
                         <barButtonItem key="rightBarButtonItem" title="input" image="plus" catalog="system" id="ZF1-jh-IS6">
                             <connections>
-                                <action selector="goInput:" destination="BYZ-38-t0r" id="ekh-VW-7nr"/>
+                                <action selector="inputButtonTapped:" destination="BYZ-38-t0r" id="26X-2j-FRl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -96,6 +97,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1052.6717557251909" y="-27.464788732394368"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="TGd-5B-Y04">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="oLx-0I-VUM" customClass="DetailViewController" customModule="ToDoListOfTDD" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rue-Qy-GMD">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZ6-E3-Hi6">
+                                <rect key="frame" x="0.0" y="119" width="393" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gW4-cK-vYj">
+                                <rect key="frame" x="0.0" y="411" width="393" height="407"/>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4N-d1-ZKS">
+                                <rect key="frame" x="0.0" y="340" width="393" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="V8o-Ud-pvI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gW4-cK-vYj" firstAttribute="trailing" secondItem="V8o-Ud-pvI" secondAttribute="trailing" id="4oc-kt-PFV"/>
+                            <constraint firstItem="V8o-Ud-pvI" firstAttribute="trailing" secondItem="P4N-d1-ZKS" secondAttribute="trailing" id="5Gh-sY-xi3"/>
+                            <constraint firstItem="P4N-d1-ZKS" firstAttribute="leading" secondItem="V8o-Ud-pvI" secondAttribute="leading" id="7au-DW-3U5"/>
+                            <constraint firstItem="V8o-Ud-pvI" firstAttribute="bottom" secondItem="gW4-cK-vYj" secondAttribute="bottom" id="Fla-Ac-Unu"/>
+                            <constraint firstItem="P4N-d1-ZKS" firstAttribute="centerX" secondItem="rue-Qy-GMD" secondAttribute="centerX" id="I5r-Fj-MCK"/>
+                            <constraint firstItem="WZ6-E3-Hi6" firstAttribute="leading" secondItem="V8o-Ud-pvI" secondAttribute="leading" id="Pe4-W8-Kok"/>
+                            <constraint firstItem="V8o-Ud-pvI" firstAttribute="trailing" secondItem="WZ6-E3-Hi6" secondAttribute="trailing" id="SlT-A7-Fbz"/>
+                            <constraint firstItem="gW4-cK-vYj" firstAttribute="leading" secondItem="V8o-Ud-pvI" secondAttribute="leading" id="YhN-Qm-6v6"/>
+                            <constraint firstItem="P4N-d1-ZKS" firstAttribute="top" secondItem="WZ6-E3-Hi6" secondAttribute="bottom" constant="200" id="eUr-14-1Hg"/>
+                            <constraint firstItem="gW4-cK-vYj" firstAttribute="top" secondItem="P4N-d1-ZKS" secondAttribute="bottom" constant="50" id="gDu-v0-r4v"/>
+                            <constraint firstItem="WZ6-E3-Hi6" firstAttribute="top" secondItem="V8o-Ud-pvI" secondAttribute="top" constant="60" id="gZF-gy-YlE"/>
+                            <constraint firstItem="gW4-cK-vYj" firstAttribute="leading" secondItem="V8o-Ud-pvI" secondAttribute="leading" id="jm0-3g-m0T"/>
+                            <constraint firstItem="V8o-Ud-pvI" firstAttribute="trailing" secondItem="gW4-cK-vYj" secondAttribute="trailing" id="t4U-kx-xQe"/>
+                            <constraint firstItem="gW4-cK-vYj" firstAttribute="bottom" secondItem="V8o-Ud-pvI" secondAttribute="bottom" id="yZE-Lg-lyG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="locationLabel" destination="P4N-d1-ZKS" id="577-nH-I2G"/>
+                        <outlet property="mapView" destination="gW4-cK-vYj" id="XFp-Tk-BzU"/>
+                        <outlet property="titleLabel" destination="WZ6-E3-Hi6" id="clt-OM-1XK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HsY-ir-fq3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1774.8091603053435" y="-27.464788732394368"/>
         </scene>
         <!--Input View Controller-->
         <scene sceneID="Xct-VQ-H34">

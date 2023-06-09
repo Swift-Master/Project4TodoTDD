@@ -56,5 +56,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else {
+            return
+        }
+        detailVC.data = data[indexPath.row]
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
 }
 

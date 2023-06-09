@@ -10,6 +10,7 @@
 		653CF0802A31998200581290 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653CF07F2A31998200581290 /* Model.swift */; };
 		653CF0822A319A3500581290 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653CF0812A319A3500581290 /* InputViewController.swift */; };
 		653CF0842A31BB2600581290 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653CF0832A31BB2600581290 /* MainTableViewCell.swift */; };
+		653CF08D2A32C2B400581290 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653CF08C2A32C2B400581290 /* DetailViewController.swift */; };
 		6E52A5502A2108FD009A81D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E52A54F2A2108FD009A81D2 /* AppDelegate.swift */; };
 		6E52A5522A2108FD009A81D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E52A5512A2108FD009A81D2 /* SceneDelegate.swift */; };
 		6E52A5542A2108FD009A81D2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E52A5532A2108FD009A81D2 /* MainViewController.swift */; };
@@ -42,6 +43,7 @@
 		653CF07F2A31998200581290 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		653CF0812A319A3500581290 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		653CF0832A31BB2600581290 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		653CF08C2A32C2B400581290 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		6E52A54C2A2108FD009A81D2 /* ToDoListOfTDD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoListOfTDD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E52A54F2A2108FD009A81D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E52A5512A2108FD009A81D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			children = (
 				6E52A5532A2108FD009A81D2 /* MainViewController.swift */,
 				653CF0812A319A3500581290 /* InputViewController.swift */,
+				653CF08C2A32C2B400581290 /* DetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				6E52A5522A2108FD009A81D2 /* SceneDelegate.swift in Sources */,
 				653CF0842A31BB2600581290 /* MainTableViewCell.swift in Sources */,
 				653CF0802A31998200581290 /* Model.swift in Sources */,
+				653CF08D2A32C2B400581290 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
