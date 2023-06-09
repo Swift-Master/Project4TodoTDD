@@ -24,6 +24,7 @@ class InputViewController: UIViewController {
 
     // MARK: - Save Button Tapped
     @IBAction func doSave(_ sender: UIButton) {
+        // 유효성 검사
         guard let titleString = titleTextField.text, titleString.count > 0 else {
             return
         }

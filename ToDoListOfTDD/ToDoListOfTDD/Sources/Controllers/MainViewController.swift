@@ -16,11 +16,22 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 실행 시 데이터가 없으면 InputView present
+        if data.isEmpty {
+            goInput()
+        }
+        
         tableView.delegate = self
         tableView.dataSource = self
     }
 
-    @IBAction func goInput(_ sender: UIBarButtonItem) {
+    // MARK: - Input Button Tapped
+    @IBAction func inputButtonTapped(_ sender: UIBarButtonItem) {
+        goInput()
+    }
+    
+    // MARK: - InputView Present
+    func goInput() {
         guard let inputVC = storyboard?.instantiateViewController(withIdentifier: "InputViewController") as? InputViewController else {
             return
         }
@@ -30,6 +41,7 @@ class MainViewController: UIViewController {
 
 }
 
+// MARK: - MainViewController UITableView Extension
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

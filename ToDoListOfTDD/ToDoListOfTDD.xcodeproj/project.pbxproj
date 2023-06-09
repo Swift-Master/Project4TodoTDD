@@ -82,6 +82,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		653CF0852A32B9F800581290 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				653CF08A2A32BA4B00581290 /* Controllers */,
+				653CF0892A32BA4300581290 /* Views */,
+				653CF0882A32BA3C00581290 /* Models */,
+				6E52A5512A2108FD009A81D2 /* SceneDelegate.swift */,
+				6E52A54F2A2108FD009A81D2 /* AppDelegate.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		653CF0862A32BA0900581290 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6E52A5582A2108FE009A81D2 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		653CF0872A32BA1A00581290 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				6E52A55D2A2108FE009A81D2 /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		653CF0882A32BA3C00581290 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				653CF07F2A31998200581290 /* Model.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		653CF0892A32BA4300581290 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				653CF0832A31BB2600581290 /* MainTableViewCell.swift */,
+				6E52A55A2A2108FE009A81D2 /* LaunchScreen.storyboard */,
+				6E52A5552A2108FD009A81D2 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		653CF08A2A32BA4B00581290 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6E52A5532A2108FD009A81D2 /* MainViewController.swift */,
+				653CF0812A319A3500581290 /* InputViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		6E52A5432A2108FD009A81D2 = {
 			isa = PBXGroup;
 			children = (
@@ -105,16 +160,9 @@
 		6E52A54E2A2108FD009A81D2 /* ToDoListOfTDD */ = {
 			isa = PBXGroup;
 			children = (
-				6E52A54F2A2108FD009A81D2 /* AppDelegate.swift */,
-				6E52A5512A2108FD009A81D2 /* SceneDelegate.swift */,
-				6E52A5532A2108FD009A81D2 /* MainViewController.swift */,
-				6E52A5552A2108FD009A81D2 /* Main.storyboard */,
-				6E52A5582A2108FE009A81D2 /* Assets.xcassets */,
-				6E52A55A2A2108FE009A81D2 /* LaunchScreen.storyboard */,
-				6E52A55D2A2108FE009A81D2 /* Info.plist */,
-				653CF07F2A31998200581290 /* Model.swift */,
-				653CF0812A319A3500581290 /* InputViewController.swift */,
-				653CF0832A31BB2600581290 /* MainTableViewCell.swift */,
+				653CF0872A32BA1A00581290 /* SupportingFiles */,
+				653CF0862A32BA0900581290 /* Resources */,
+				653CF0852A32B9F800581290 /* Sources */,
 			);
 			path = ToDoListOfTDD;
 			sourceTree = "<group>";
