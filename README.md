@@ -42,4 +42,4 @@ info.plist의 경우 루트 경로가 지정되어 있어서 Build Setting에서
 - Annotation을 사용하여 이동한 주소에 핀을 꽂고, 설명 출력
 
 ## 구현 화면
-![구현화면](./ToDoTDD_step1.gif)
+<img src="./ToDoTDD_step1.gif" width="300" />
